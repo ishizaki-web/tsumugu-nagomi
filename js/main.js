@@ -52,28 +52,22 @@
           });
       });
 
-      // TOP BACKボタン
-    
-      $(function() {
-        var topBtn = $('#page-top');    
-        topBtn.hide();
-        //スクロールが500に達したらボタン表示
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 500) {
-                topBtn.fadeIn();
+      // topback show hide
+        $(function() {
+            var navi = $("#topback");
+            var startPos = 0;
+            $(window).scroll(function() {
+            var currentPos = $(this).scrollTop();
+            if (currentPos > startPos) {
+                if ($(window).scrollTop() >= 600) {
+                $(navi).css("transform", "translateY(300%)");
+                }
             } else {
-                topBtn.fadeOut();
+                $(navi).css("transform", "translateY(0)");
             }
+            startPos = currentPos;
+            });
         });
-        
-        //スクロールしてトップ
-        topBtn.click(function () {
-            $('body,html').animate({
-                scrollTop: 0
-            }, 500);
-            return false;
-        });
-    });
 
     
 
